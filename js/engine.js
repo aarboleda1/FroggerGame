@@ -23,11 +23,21 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
+        div = doc.createElement('div'),
         lastTime;
+
 
     canvas.width = 505;
     canvas.height = 606;
-    doc.body.appendChild(canvas);
+    doc.body.appendChild(div).setAttribute("id", "img-id")
+    doc.body.appendChild(canvas)
+    var elem = document.createElement("img");
+    elem.setAttribute("src", "images/char-boy.png");
+    elem.setAttribute("height", "168");
+    elem.setAttribute("width", "124");
+    elem.setAttribute("alt", "boy");
+    doc.getElementById("img-id").appendChild(elem);
+    ctx
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -161,7 +171,7 @@ var Engine = (function(global) {
     function reset() {
         // noop
     }
-
+    
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
      * all of these images are properly loaded our game will start.
